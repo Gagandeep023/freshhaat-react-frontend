@@ -5,6 +5,7 @@ import useToggle from '../hooks/useToggle';
 
 import axios from '../api/axios';
 import useAuth from '../hooks/useAuth';
+import moment from 'moment';
 const LOGIN_URL = '/api/v1/users/login';
 
 const Login = () => {
@@ -43,7 +44,10 @@ const Login = () => {
             );
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
-            setAccessAuth({ username, roles, accessToken });
+            const expiresIn = response?.data?.expiresIn;
+            const expires = moment().add(expiresIn)
+
+            setAccessAuth({ username, roles, accessToken, expires});
             resetUser();
             setPassword('');
             navigate(from, { replace: true });
