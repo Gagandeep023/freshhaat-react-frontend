@@ -44,14 +44,6 @@ const NewPost = () => {
         <main className="NewPost">
             <h2>New Post</h2>
             <form className="newPostForm" onSubmit={handleSubmit}>
-                {/* <label htmlFor="postProduct">Product:</label>
-                <input
-                    id="postProduct"
-                    type="text"
-                    required
-                    value={postProductName}
-                    onChange={(e) => setPostProductName(e.target.value)} */}
-                {/* /> */}
                 <label htmlFor="postProductId">Product:</label>
                 <select 
                 id="postproductId"

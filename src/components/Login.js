@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import useInput from '../hooks/useInput';
 import useToggle from '../hooks/useToggle';
 
@@ -9,10 +9,10 @@ import moment from 'moment';
 const LOGIN_URL = '/api/v1/users/login';
 
 const Login = () => {
-    const [, setAccessAuth] = useAuth('accessAuth', '');
+    const [accessAuth, setAccessAuth] = useAuth('accessAuth', '');
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/dashboard";
 
     const userRef = useRef();
     const errRef = useRef();
@@ -23,6 +23,7 @@ const Login = () => {
     const [errMsg, setErrMsg] = useState('');
     const [check, toggleCheck] = useToggle('persist', false);
 
+    
     useEffect(() => {
         userRef.current.focus();
     }, [])
@@ -100,12 +101,12 @@ const Login = () => {
                     <label htmlFor="persist">Trust This Device</label>
                 </div>
             </form>
-            <p>
+            {/* <p>
                 Need an Account?<br />
                 <span className="line">
                     <Link to="/register">Sign Up</Link>
                 </span>
-            </p>
+            </p> */}
         </section>
 
     )

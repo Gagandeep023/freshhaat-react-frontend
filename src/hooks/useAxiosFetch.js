@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import useAxiosPrivate from './useAxiosPrivate';
 
 const useAxiosFetch = (dataUrl) => {
@@ -40,7 +39,7 @@ const useAxiosFetch = (dataUrl) => {
         }
 
         return cleanUp;
-    }, [dataUrl]);
+    }, []);
 
     return { data, fetchError, isLoading };
 }

@@ -1,4 +1,3 @@
-import Post from './Post';
 import ProductDetail from './productDetail';
 
 const Feed = ({ productDetail }) => {

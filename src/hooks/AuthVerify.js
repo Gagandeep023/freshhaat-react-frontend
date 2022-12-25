@@ -1,10 +1,12 @@
 import moment from 'moment';
 import React, { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
 
 const AuthVerify = () => {
     const [accessAuth,] = useAuth('accessAuth', '');
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const checkExpiry = moment().isAfter(accessAuth?.expires
       );
@@ -12,6 +14,8 @@ const AuthVerify = () => {
       if (accessAuth) {
         if (checkExpiry) {
           localStorage.clear();
+          navigate('/login', { state: { from: location }, replace: true });
+
         } 
       }
      

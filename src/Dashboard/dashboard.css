@@ -25,6 +25,9 @@ body {
   justify-content: center;
   align-items: center;
 } 
+#root .App{
+  flex-grow: 1;
+} 
 
 .Dashboard {
   width: 100%;
@@ -125,7 +128,7 @@ body {
   cursor: pointer;
 }
 
-.DashboardHome, .NewPost, .PostPage, .About, .Missing {
+.DashboardHome, .NewPost, .About, .Missing {
   width: 100%;
   flex-grow: 1;
   padding: 1rem;
@@ -133,8 +136,12 @@ body {
   background-color: #fff;
 }
 
+.PostPage{
+  padding: 1rem;
+  overflow-y: auto;
+  background-color: #fff;
+}
 .post {
-  margin-top: 1rem;
   padding-bottom: 1rem;
   border-bottom: 1px solid lightgray;
 }
@@ -152,9 +159,9 @@ body {
   margin-top: 0;
 }
 
-.post:last-child {
+/* .post:last-child {
   border-bottom: none;
-}
+} */
 
 .postDate {
   font-size: 0.75rem;
@@ -163,6 +170,22 @@ body {
 
 .postBody {
   margin: 1rem 0;
+}
+
+.postImage {
+  width: 180px;
+  height: 180px;
+  float: right; 
+}
+.row {
+  display: flex;
+}
+
+.PostColumnRight {
+  flex: 25%;
+}
+.PostColumnleft {
+  flex: 75%;
 }
 
 .newPostForm {

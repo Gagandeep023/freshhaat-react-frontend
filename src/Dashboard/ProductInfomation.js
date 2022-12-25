@@ -2,7 +2,6 @@ import { Link, useLocation, useNavigate, useSearchParams } from "react-router-do
 import { useContext, useEffect, useState } from 'react';
 import DataContext from '../context/DataContext';
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
-
 import useAxiosFetch from "../hooks/useAxiosFetch";
 import axios from "../api/axios";
 import './PostPage.css';
@@ -10,18 +9,18 @@ import { format } from "date-fns";
 
 
 
-const PostPage =  () => {
+const ProductInfomation =  () => {
     const [searchParams] = useSearchParams();
 
-    const productId = searchParams.get('productId');
-    const productShopId = searchParams.get('productShopId');
+    const productInfoId = searchParams.get('productInfoId');
 
     const [productDetail, setProductDetail] = useState({});
 
    
 
-    const url = `/api/v1/dashboard/product-details?productId=${productId}&productShopId=${productShopId}`;
+    const url = `/api/v1/dashboard/product-qr-code-details?productInfoId=${productInfoId}`;
     const { data } = useAxiosFetch(url);
+
 
     useEffect(() => {
         if(data && data.productDetails)
@@ -61,4 +60,4 @@ const PostPage =  () => {
     )
 }
 
-export default PostPage
+export default ProductInfomation

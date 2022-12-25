@@ -7,7 +7,7 @@ import { DataProvider } from "../context/DataContext";
 const DashboardLayout = () => {
     return (
         <main className="Dashboard">
-            <Header title="React JS Blog" />
+            <Header title="FreshHaat Dashboard" />
             <DataProvider>
             <Nav />
             <Outlet />

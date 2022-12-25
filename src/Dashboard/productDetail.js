@@ -1,18 +1,26 @@
+import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
 
 const ProductDetail = ({ productDetail }) => {
     return (
-        <article className="post">
-            <Link to={`/post/${productDetail.id}`}>
-                <h2>{productDetail.product_name}</h2>
-                <p className="postDate">{productDetail.crop_time}</p>
+        <div class="row">
+        <article className="post PostColumnLeft">
+            <Link to={`/dashboard/product-details?productId=${productDetail.product_id}&productShopId=${productDetail.user_id}`}>
+                <h2>{"Product Name: " + productDetail.product_name}</h2>
+                <p className="postBody">{"Harvest Time: " + format(new Date(productDetail.crop_time), 'MMMM dd, yyyy pp')
+}</p>
             </Link>
             <p className="postBody">{
-                (productDetail.farm_address).length <= 25
-                    ? productDetail.farm_address
-                    : `${(productDetail.farm_address).slice(0, 25)}...`
+                    "Farm Address: " + productDetail.farm_address
             }</p>
         </article>
+        {/* <img src={productDetail.product_image} alt="Logo" /> */}
+        <div class="post PostColumnRight ">
+            <img className="postImage" src={productDetail.product_image} alt=""/>
+            </div>
+
+        </div>
+
     )
 }
 

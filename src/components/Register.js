@@ -88,7 +88,7 @@ const Register = () => {
                     <h1>Success!</h1>
                     <p>
                     <span className="line">
-                            <Link to="/">Sign In</Link>
+                            <Link to="/dashboard/home">Home Page</Link>
                     </span>
                     </p>
                 </section>
@@ -171,9 +171,8 @@ const Register = () => {
                         <button disabled={!validName || !validPassword || !validMatch ? true : false}>Sign Up</button>
                     </form>
                     <p>
-                        Already registered?<br />
                         <span className="line">
-                            <Link to="/">Sign In</Link>
+                            <Link to="/dashboard">Home Page</Link>
                         </span>
                     </p>
                 </section>
