@@ -17,6 +17,7 @@ const [postQrCodeImage, setPostQrCodeImage] = useState('');
 const [updateText, setUpdateText] = useState('');
 const [changeQrLinkageText, setChangeQrLinkageText] = useState('');
 const [isChangeQrLinkageVisible, setChangeQrLinkageVisible] = useState(true);
+const [updateImage, setUpdateImage] = useState('');
 
 
 
@@ -57,17 +58,20 @@ const CreateNewQrCodeLink = async (e) => {
 
 const ChangeQrCodeImage = async (e) => {
     e.preventDefault();
-    const NewQrCodeImage = { qr_id: postQrCodeId, qr_image: postQrCodeImage.name };
-
+    
     try {
-        
-        const response =  await axiosPrivate.post('/api/v1/dashboard/change-qr-code-linkage', NewQrCodeImage );
+        if(updateImage && updateImage[0] ){
+            const NewQrCodeImage = { qr_id: postQrCodeId, qr_image: updateImage[0].name, qr_image_details: updateImage[0] };
+        const response =  await axiosPrivate.post('/api/v1/dashboard/change-qr-code-image', NewQrCodeImage );
         if(response) {
             setQrUplaodVisible(current => !current);
             setUpdateText(response.data.msg)
         }
         setPostQrCodeImage('');
         setPostQrCodeId('');
+    } else {
+        console.log("please select file")
+    }
     } catch (err) {
         console.log(`Error: ${err.message}`);
     }
@@ -103,14 +107,16 @@ const ChangeQrCodeLinkage = async (e) => {
                 <label htmlFor="postProductId">{newQrCodeURL}</label>
             </div>
             <div style={{visibility: isQrUplaodVisible ? 'visible' : 'hidden'}}>
-                <form action="/action_page.php">
+                <form >
                 <label htmlFor="postProductId">Add a new qr code</label>
                     {/* <input type="file" id="myFile" name="filename"
                         onChange={(e) => setPostQrCodeImage(e.target.files[0])}
                     />
                     <br/> */}
                     <input type="file" id="inputfile" accept="image/*"
-            onChange={UploadFileInBucket} />
+            // onChange={UploadFileInBucket} 
+            onChange={(e) => setUpdateImage(e.target.files)}
+            />
                 <select 
                 id="postQrCodeId"
                 value={postQrCodeId}
@@ -127,8 +133,7 @@ const ChangeQrCodeLinkage = async (e) => {
                     ))}
                 </select>
                 <br/>
-
-                    <input onClick={ChangeQrCodeImage} type="submit"/>
+                <button onClick={ChangeQrCodeImage}  type="submit">Submit</button>
                 </form>
             </div>
             <div style={{visibility: isQrUplaodVisible ? 'hidden' : 'visible'}}>
@@ -169,7 +174,8 @@ const ChangeQrCodeLinkage = async (e) => {
                     </option>
                     ))}
                 </select>
-                <input  onClick={ChangeQrCodeLinkage} type="submit"/>
+                <button onClick={ChangeQrCodeLinkage}  type="submit">Submit</button>
+
 
                 </form>
                 </div>

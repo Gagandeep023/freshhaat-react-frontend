@@ -29,6 +29,7 @@ const Nav = () => {
                 <li><Link to="/dashboard/home">Home</Link></li>
                 <li><Link to="/dashboard/post">Post</Link></li>
                 <li><Link to="/Register">Sign</Link></li>
+                <li><Link to="/dashboard/QrCodeLinkage">QRCode</Link></li>
 
                 {/* <li><button onClick={signOut}>Sign out</button></li> */}
                 {/* <div className="flexGrow"> */}

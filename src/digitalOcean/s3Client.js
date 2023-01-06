@@ -1,5 +1,5 @@
-import { S3 } from "@aws-sdk/client-s3";
-// const { S3 } = require('@aws-sdk/client-s3');
+// import { S3 } from "@aws-sdk/client-s3";
+const { S3 } = require('@aws-sdk/client-s3');
 
 const s3Client = new S3({
     forcePathStyle: false, 
@@ -11,8 +11,8 @@ const s3Client = new S3({
     }
 });
 
-export { s3Client };
-// module.exports = { s3Client };
+// export { s3Client };
+module.exports = { s3Client };
 // import AWS from 'aws-sdk';
 
 // /**
